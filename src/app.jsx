@@ -11,9 +11,6 @@ export default class App extends React.Component {
       <>
         <Navbar />
         <Showcase />
-        <Category />
-        <Recipes />
-        <Cheff />
       </>
     );
   }
