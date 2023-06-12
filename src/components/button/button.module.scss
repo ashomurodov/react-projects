@@ -1,0 +1,25 @@
+button {
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.btn {
+  background-color: black;
+  color: #fff;
+}
+
+.btn_light {
+  background-color: #e7fafe;
+  color: #000;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-radius: 16px;
+  padding: 21px 40px;
+  border-radius: 16px;
+  cursor: pointer;
+}
