@@ -1,0 +1,73 @@
+.card__container {
+  width: 350px;
+  height: 515px;
+  border-radius: 6px;
+  padding: 30px 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+
+  .badge {
+    width: 80px;
+    height: 26px;
+    border-radius: 16px;
+    background-color: #4eab08;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .price {
+    font-size: 45px;
+  }
+
+  .description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+  }
+
+  .checkList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .active {
+      text-decoration: line-through;
+      color: #878b90;
+    }
+  }
+
+  button {
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 190px;
+    height: 50px;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.card__type {
+  display: flex;
+  justify-content: space-between;
+}
+
+.white__container {
+  color: #fff;
+}
+
+.black__container {
+  color: #000;
+}
