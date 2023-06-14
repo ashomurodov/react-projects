@@ -1,3 +1,5 @@
+import TodoList from "./TodoList";
+
 export default function App() {
-	return <h2>Hello World</h2>;
+	return <TodoList />;
 }
