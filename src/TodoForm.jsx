@@ -26,8 +26,25 @@ export class TodoForm extends React.Component {
 		this.setState(() => ({ todos: [...filteredTodo] }));
 	};
 
+	editTodo = (idx, todoText) => {
+		const editedTodo = {
+			id: idx,
+			todo: todoText,
+		};
+
+		const filteredTodo = this.state.todos.filter((todo) => todo.id !== idx);
+		filteredTodo.push(editedTodo);
+		this.setState(() => ({ todos: [...filteredTodo] }));
+	};
+
+	editProps = (idx) => {
+		const todo = this.state.todos.find((todo) => todo.id === idx);
+		const promptText = prompt("Textni kiriting", `${todo.todo}`);
+		this.editTodo(idx, promptText);
+	};
+
 	render() {
-		const todos = this.state.todos;
+		const todos = this.state.todos.sort((todo1, todo2) => todo1.id - todo2.id);
 		return (
 			<div className="container">
 				<input ref={this.inputRef} type="text" className="todo-input" />
@@ -40,7 +57,9 @@ export class TodoForm extends React.Component {
 							<span className="todoText">{todo.todo}</span>
 
 							<div className={style.btns}>
-								<button className="edit">edit</button>
+								<button onClick={() => this.editProps(todo.id)} className="edit">
+									edit
+								</button>
 								<button onClick={() => this.deleteTodo(todo.id)} className={style.delete}>
 									delete
 								</button>
