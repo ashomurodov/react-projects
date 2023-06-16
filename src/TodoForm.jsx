@@ -1,7 +1,8 @@
 import React from "react";
 import "./index.css";
-import { Todo } from "./todo";
+import style from "./todo.module.css";
 
+let counter = 0;
 export class TodoForm extends React.Component {
 	state = {
 		todos: [],
@@ -10,7 +11,7 @@ export class TodoForm extends React.Component {
 
 	handleSubmit = () => {
 		const newTodo = {
-			id: Math.random() * 1000,
+			id: ++counter,
 			todo: this.inputRef.current.value,
 		};
 
@@ -19,9 +20,14 @@ export class TodoForm extends React.Component {
 		this.inputRef.current.value = "";
 	};
 
+	deleteTodo = (idx) => {
+		const filteredTodo = this.state.todos.filter((todo) => todo.id !== idx);
+		console.log(filteredTodo);
+		this.setState(() => ({ todos: [...filteredTodo] }));
+	};
+
 	render() {
 		const todos = this.state.todos;
-		console.log("todos: ", todos);
 		return (
 			<div className="container">
 				<input ref={this.inputRef} type="text" className="todo-input" />
@@ -30,7 +36,16 @@ export class TodoForm extends React.Component {
 				</button>
 				<div className="todos">
 					{todos.map((todo) => (
-						<Todo key={todo.id} text={todo.todo} />
+						<div key={todo.id} className={style.todo}>
+							<span className="todoText">{todo.todo}</span>
+
+							<div className={style.btns}>
+								<button className="edit">edit</button>
+								<button onClick={() => this.deleteTodo(todo.id)} className={style.delete}>
+									delete
+								</button>
+							</div>
+						</div>
 					))}
 				</div>
 			</div>
