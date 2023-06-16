@@ -1,5 +1,8 @@
-import TodoList from "./TodoList";
+import React from "react";
+import { TodoList } from "./TodoList";
 
-export default function App() {
-	return <TodoList />;
+export class App extends React.Component {
+	render() {
+		return <TodoList />;
+	}
 }
