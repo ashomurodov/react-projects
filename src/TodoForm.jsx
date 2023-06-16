@@ -1,49 +1,41 @@
 import React from "react";
+import "./index.css";
+import { Todo } from "./todo";
 
 export class TodoForm extends React.Component {
-  // const [input, setInput] = useState("");
-  // const [list, setList] = useState([]);
+	state = {
+		todos: [],
+	};
+	inputRef = React.createRef();
 
-  // const handleSubmit = (e) => {
-  // 	e.preventDefault();
+	handleSubmit = () => {
+		const newTodo = {
+			id: Math.random() * 1000,
+			todo: this.inputRef.current.value,
+		};
 
-  // 	(function setListFunc() {
-  // 		const newList = {
-  // 			id: Math.floor(Math.random() * 1000),
-  // 			todo: input,
-  // 		};
+		this.setState((prevState) => ({ todos: [...prevState.todos, newTodo] }));
 
-  // 		setList([...list, newList]);
-  // 		console.log([newList, ...list]);
-  // 	})();
-  // };
+		this.inputRef.current.value = "";
+	};
 
-  state = {
-    todos: [],
-  };
-  inputRef = React.createRef();
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const newTodo = {
-      id: Math.random() * 1000,
-      todo: this.inputRef.current.value,
-    };
-
-    this.setState((prevState) => {
-      console.log(prevState);
-      return { todos: [...prevState.todos, newTodo] };
-    });
-  };
-
-  render() {
-    const todos = this.state.todos;
-    console.log(todos);
-    return (
-      <form className="container" onSubmit={this.handleSubmit}>
-        <input ref={this.inputRef} type="text" className="todo-input" />
-        <button className="todo-btn">submit</button>
-      </form>
-    );
-  }
+	render() {
+		const todos = this.state.todos;
+		console.log("todos: ", todos);
+		return (
+			<div className="container">
+				<input ref={this.inputRef} type="text" className="todo-input" />
+				<button className="todo-btn" onClick={this.handleSubmit}>
+					submit
+				</button>
+				<div className="todos">
+					{todos.map((todo) => (
+						<Todo key={todo.id} text={todo.todo} />
+					))}
+				</div>
+			</div>
+		);
+	}
 }
+
+// state, setState

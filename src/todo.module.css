@@ -1,0 +1,30 @@
+.todo {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px;
+	border-radius: 4px;
+	color: #000;
+	font-size: 24px;
+	align-items: center;
+	width: 1000px;
+	border: 2px solid #000;
+}
+
+.btns {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+.btns button {
+	padding: 18px 20px;
+	font-size: 20px;
+	border: none;
+	border-radius: 8px;
+	background-color: dodgerblue;
+	color: #fff;
+}
+
+.delete {
+	background-color: crimson;
+}
